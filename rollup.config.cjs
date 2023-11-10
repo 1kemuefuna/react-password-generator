@@ -21,7 +21,7 @@ module.exports = {
     {
       file: 'dist/index.min.js',
       format: 'umd',
-      name: 'ReactFetchMagic',
+      name: 'ReactifyPasswordGenerator',
       exports: 'named',
       sourcemap: true,
       plugins: [terser()],
