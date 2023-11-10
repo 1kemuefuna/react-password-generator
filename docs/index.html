@@ -1,28 +1,255 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Reactify Password Generator</title>
-</head>
-<body>
-  <h1>Reactify Password Generator</h1>
-  <div id="app"></div>
-  <script src="https://cdn.jsdelivr.net/npm/react/umd/react.development.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.development.js"></script>
-  <script src="/dist/index.min.js"></script>
-  <script>
-    const handleGeneratePassword = (password) => {
-      alert('Generated Password: ' + password);
+  <head>
+    <title>Reactify Password Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f8fa;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        position: relative;
+        z-index: 1;
+        margin-top: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #0366d6;
+        margin-bottom: 20px;
+      }
+
+      .password-container {
+        background-color: #ffffff;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .generate-button {
+        background-color: #28a745;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .generate-button:hover {
+        background-color: #218838;
+      }
+
+      .copy-button {
+        background-color: #0366d6;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      .copy-button:hover {
+        background-color: #0056b3;
+      }
+
+      .code-box {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
+        overflow-x: auto;
+      }
+
+      pre {
+        margin: 0;
+        background-color: #f8f8f8;
+        border: 0px solid #ccc;
+        padding: 10px;
+      }
+
+      code {
+        color: #333;
+        font-size: 13px;
+        font-family: Monaco, monospace;
+      }
+
+      .github-fork-ribbon {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+      }
+
+      /* Add your custom styles here */
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css"/>
+  </head>
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/your-repo-url" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+    <div class="container">
+      <h1>Reactify Password Generator</h1>
+
+      <!-- Description -->
+      <h2>Description</h2>
+      <p>
+        Reactify Password Generator is a React component library for generating strong passwords and checking their strength.
+      </p>
+
+      <!-- Installation -->
+      <h2>Installation</h2>
+      <p>
+        You can install the library via npm or yarn.
+      </p>
+      <div class="code-box">
+        <pre><code>npm install reactify-password-generator</code></pre>
+      </div>
+
+      <!-- Usage -->
+      <h2>Usage</h2>
+      <p>
+        To use the Reactify Password Generator component, include it in your React application.
+      </p>
+
+      <!-- Example -->
+      <h2>Example</h2>
+      <div id="app"></div>
+      <div class="password-container">
+        <div id="password-strength">Password Strength:
+          <span id="strength-indicator"></span></div>
+        <div id="generated-password"></div>
+        <button id="copy-button" class="copy-button">Copy Password</button>
+      </div>
+
+      <div class="code-box">
+        <pre><code>
+  import react from 'react';
+  import { reactifypasswordgenerator } from 'reactify-password-generator';
+
+  const app = () => {
+    const handlegeneratepassword = (password) => {
+      console.log('generated password:', password);
     };
 
-    ReactDOM.render(
-      React.createElement(ReactifyPasswordGenerator.ReactifyPasswordGenerator, {
-        renderTrigger: (props) =>
-          React.createElement('button', props, 'Generate Password'),
-        onGenerate: handleGeneratePassword,
-        regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      }),
-      document.getElementById('app')
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;password generator&lt;/h1&gt;
+        
+        &lt;reactifypasswordgenerator
+          rendertrigger={(props) => &lt;button {...props}&gt;generate password&lt;/button&gt;}
+          ongenerate={handlegeneratepassword}
+          regex=/your-custom-regex-here/
+        /&gt;
+
+      &lt;/div&gt;
     );
-  </script>
-</body>
+  };
+
+  export default app;
+      </code></pre>
+      </div>
+
+      <div class="code-box">
+        <pre><code>
+  import react from 'react';
+  import { reactifypasswordstrengthindicator } from 'reactify-password-generator';
+
+  const app = () => {
+    const password = 'your-password-here';
+
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;password strength indicator&lt;/h1&gt;
+        &lt;reactifypasswordstrengthindicator password={password} regex=/your-custom-regex-here/ /&gt;
+      /&lt;/div&gt;
+    );
+  };
+
+  export default app;
+      </code></pre>
+      </div>
+
+      <!-- Props -->
+      <h2>Props</h2>
+      <p>
+        You can configure the Reactify Password Generator component with various props, including:
+      </p>
+      <ul>
+        <li>
+          <code>renderTrigger</code>: A function to render the password generation trigger button.</li>
+        <li>
+          <code>onGenerate</code>: A callback function to handle the generated password.</li>
+        <li>
+          <code>regex</code>: A regular expression to enforce password complexity (default: a combination of symbols, capital letters, small letters, and numbers).</li>
+      </ul>
+
+      <!-- License -->
+      <h2>License</h2>
+      <p>
+        This library is distributed under the MIT License.
+      </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/reactify-password-generator@1.0.1-0/dist/index.min.js"></script>
+    <!-- Add Font Awesome for the copy icon -->
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+      function handleGeneratePassword(password) {
+        const generatedPasswordElement = document.getElementById('generated-password');
+        generatedPasswordElement.textContent = 'Generated Password: ' + password;
+
+        const passwordStrengthElement = document.getElementById('strength-indicator');
+        // You can compute the password strength and update the indicator here.
+        const passwordStrength = computePasswordStrength(password);
+        passwordStrengthElement.textContent = passwordStrength;
+      }
+
+      // Function to compute the password strength (you can implement this)
+      function computePasswordStrength(password) {
+        // Implement your password strength logic here
+        // For example, you can check the length, complexity, etc.
+        return 'Strong'; // Modify this based on your logic
+      }
+
+      // Function to copy the generated password to the clipboard
+      document
+        .getElementById('copy-button')
+        .addEventListener('click', () => {
+          const generatedPasswordElement = document.getElementById('generated-password');
+          const password = generatedPasswordElement
+            .textContent
+            .split(': ')[1];
+
+          const tempInput = document.createElement('input');
+          document
+            .body
+            .appendChild(tempInput);
+          tempInput.value = password;
+          tempInput.select();
+          document.execCommand('copy');
+          document
+            .body
+            .removeChild(tempInput);
+
+          alert('Password copied to clipboard');
+        });
+
+      ReactDOM.render(React.createElement(ReactifyPasswordGenerator.ReactifyPasswordGenerator, {
+        renderTrigger: (props) => React.createElement('button', {
+          ...props,
+          className: 'generate-button'
+        }, 'Generate Password'),
+        onGenerate: handleGeneratePassword,
+        regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+      }), document.getElementById('app'));
+    </script>
+  </body>
 </html>
