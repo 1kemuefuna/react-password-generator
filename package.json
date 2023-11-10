@@ -17,7 +17,7 @@
     "password",
     "typescript"
   ],
-  "author": "Michael Ikemuefuna Ukandu <michael@ukandumichael.com>",
+  "author": "Michael Ikemuefuna Ukandu <michael.ikem.ukandu@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
