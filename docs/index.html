@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reactify Password Generator Example</title>
+</head>
+<body>
+  <h1>Reactify Password Generator Example</h1>
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/react/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reactify-password-generator/dist/index.js"></script>
+  <script>
+    const handleGeneratePassword = (password) => {
+      alert('Generated Password: ' + password);
+    };
+
+    ReactDOM.render(
+      React.createElement(ReactifyPasswordGenerator.ReactifyPasswordGenerator, {
+        renderTrigger: (props) =>
+          React.createElement('button', props, 'Generate Password'),
+        onGenerate: handleGeneratePassword,
+        regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      }),
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>
